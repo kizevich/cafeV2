@@ -18,7 +18,23 @@ public class Status {
         return name;
     }
 
-    public int getDiscount() { return discount; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
 }

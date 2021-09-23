@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="by.itstep.cafe.entity.User"
+           table="user">
+        <meta attribute="class-description">
+            This class contains user details.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property column="userName" name="userName" type="string"/>
+        <property column="phone" name="phone" type="string"/>
+        <property column="password" name="password" type="string"/>
+        <many-to-one name="status" not-null="true"
+                     class="by.itstep.cafe.entity.Status"/>
+        <many-to-one name="role" not-null="true"
+                     class="by.itstep.cafe.entity.Role"/>
+    </class>
+
+    <class name="by.itstep.cafe.entity.Status" table="status">
+        <meta attribute="class-description">
+            This class contains status info.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="discount" column="discount" type="string"/>
+    </class>
+
+    <class name="by.itstep.cafe.entity.Role" table="role">
+        <meta attribute="class-description">
+            This class contains role info.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+    </class>
+
+    <class name="by.itstep.cafe.entity.Product"
+           table="product">
+        <meta attribute="class-description">
+            This class contains product details.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property column="name" name="name" type="string"/>
+        <property column="price" name="price" type="int"/>
+        <property column="description" name="description" type="string"/>
+        <property column="image_src" name="imageSrc" type="string"/>
+        <many-to-one name="type" not-null="true"
+                     class="by.itstep.cafe.entity.Type"/>
+    </class>
+
+    <class name="by.itstep.cafe.entity.Type"
+           table="type">
+        <meta attribute="class-description">
+            This class contains type details.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property column="name" name="name" type="string"/>
+    </class>
+
+    <class name="by.itstep.cafe.entity.Order" table="order">
+        <meta attribute="class-description">
+            This class contains order details.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property column="state" name="state" type="string"/>
+        <property column="crateDate" name="createDate" type="string"/>
+        <property column="price" name="fullPrice" type="int"/>
+        <many-to-one name="client" not-null="true"
+                     class="by.itstep.cafe.entity.User"/>
+        <many-to-one name="driver" not-null="true"
+                     class="by.itstep.cafe.entity.User"/>
+        <many-to-one name="formedBy" not-null="true"
+                     class="by.itstep.cafe.entity.User"/>
+        <set name="products" cascade="save-update" table="productSet">
+            <key column="orderId"/>
+            <many-to-many column="productId" class="by.itstep.cafe.entity.Product"/>
+        </set>
+    </class>
+</hibernate-mapping>

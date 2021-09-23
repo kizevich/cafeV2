@@ -2,30 +2,86 @@ package by.itstep.cafe.dao.impl;
 
 import by.itstep.cafe.dao.UserDao;
 import by.itstep.cafe.entity.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
+import javax.annotation.ManagedBean;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static by.itstep.cafe.dao.impl.ConnectionDao.*;
-import static by.itstep.cafe.dao.impl.ConnectionDao.createEntity;
+@ManagedBean
+@SessionScoped
+public class UserDaoImpl implements UserDao, Serializable {
 
-public class UserDaoImpl implements UserDao {
+    private static SessionFactory sessionFactory;
+
+    public UserDaoImpl() {
+        sessionFactory = new Configuration().configure().buildSessionFactory();
+    }
 
     @Override
-    public User createUser(User user) {
-        List <String> values = Stream.of(user.getUserName(), user.getPassword(), user.getPhone(),
-                user.getStatusId(), user.getRoleId()).
-                map(String::valueOf).collect(Collectors.toList());
-        String query = "INSERT INTO user (userName, password, phone, statusId, roleId) " +
-                "VALUES ('" + String.join("', '", values) + "')";
-        user.setId(createEntity(query));
+    public void addUser(User user) {
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        session.save(user);
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public void removeUser(int id) {
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        User user = session.get(User.class, id);
+        session.delete(user);
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public void updateUser(User user) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public List<User> listUsers() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        List users = session.createQuery("FROM User").list();
+        transaction.commit();
+        session.close();
+        return users;
+    }
+
+    @Override
+    public User getUser(String name) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        Query query = session.createQuery("from User where userName=:name");
+        query.setParameter("name", name);
+        User user = (User) query.uniqueResult();
+        transaction.commit();
+        session.close();
         return user;
     }
-
-    public void deleteUser(int id) {
-
-    }
-
-
 }

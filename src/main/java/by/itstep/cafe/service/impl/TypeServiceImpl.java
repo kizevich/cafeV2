@@ -5,6 +5,8 @@ import by.itstep.cafe.dao.TypeDao;
 import by.itstep.cafe.entity.Type;
 import by.itstep.cafe.service.TypeService;
 
+import java.util.List;
+
 public class TypeServiceImpl implements TypeService {
 
     private TypeDao typeDao;
@@ -14,7 +16,27 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public void createType(Type type) {
-        typeDao.createType(type);
+    public void addType(Type type) {
+        typeDao.addType(type);
+    }
+
+    @Override
+    public void removeType(int id) {
+        typeDao.removeType(id);
+    }
+
+    @Override
+    public void updateType(Type type) {
+        typeDao.updateType(type);
+    }
+
+    @Override
+    public List listTypes() {
+        return typeDao.listTypes();
+    }
+
+    @Override
+    public Type getType(String name) {
+        return typeDao.getType(name);
     }
 }

@@ -2,7 +2,17 @@ package by.itstep.cafe.controller;
 
 import by.itstep.cafe.entity.Type;
 
+import java.util.List;
+
 public interface TypeController {
 
-    void createType(Type type);
+    void addType(Type type);
+
+    void removeType(int id);
+
+    void updateType(Type type);
+
+    List listTypes();
+
+    Type getType(String name);
 }

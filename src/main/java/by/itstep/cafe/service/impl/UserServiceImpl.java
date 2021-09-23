@@ -5,6 +5,8 @@ import by.itstep.cafe.dao.UserDao;
 import by.itstep.cafe.entity.User;
 import by.itstep.cafe.service.UserService;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
@@ -13,12 +15,28 @@ public class UserServiceImpl implements UserService {
         this.userDao = DaoFactory.getInstance().getUserDao();
     }
 
-
+    @Override
     public void createUser(User user) {
-        userDao.createUser(user);
+        userDao.addUser(user);
     }
 
+    @Override
     public void deleteUser(int id) {
+        userDao.removeUser(id);
+    }
 
+    @Override
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+    }
+
+    @Override
+    public List listUsers() {
+        return userDao.listUsers();
+    }
+
+    @Override
+    public User getUser(String name) {
+        return userDao.getUser(name);
     }
 }

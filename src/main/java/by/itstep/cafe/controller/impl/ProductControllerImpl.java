@@ -5,6 +5,8 @@ import by.itstep.cafe.entity.Product;
 import by.itstep.cafe.service.ProductService;
 import by.itstep.cafe.service.ServiceFactory;
 
+import java.util.List;
+
 public class ProductControllerImpl implements ProductController {
 
     private ProductService productService;
@@ -14,11 +16,29 @@ public class ProductControllerImpl implements ProductController {
         this.productService = ServiceFactory.getInstance().getProductService();
     }
 
-    public void createProduct(Product product) {
-        productService.createProduct(product);
+
+    @Override
+    public void addProduct(Product product) {
+        productService.addProduct(product);
     }
 
-    public void deleteProduct(int id) {
+    @Override
+    public void removeProduct(int id) {
+        productService.removeProduct(id);
+    }
 
+    @Override
+    public void updateProduct(Product product) {
+        productService.updateProduct(product);
+    }
+
+    @Override
+    public List<Product> listProducts() {
+        return productService.listProducts();
+    }
+
+    @Override
+    public Product getProduct(String name) {
+        return productService.getProduct(name);
     }
 }

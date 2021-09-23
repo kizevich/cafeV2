@@ -28,4 +28,6 @@ public class DaoFactory {
 
     public TypeDao getTypeDao () { return new TypeDaoImpl(); }
 
+    public OrderDao getOrderDao () { return new OrderDaoImpl(); }
+
 }

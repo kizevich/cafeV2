@@ -5,6 +5,8 @@ import by.itstep.cafe.dao.ProductDao;
 import by.itstep.cafe.entity.Product;
 import by.itstep.cafe.service.ProductService;
 
+import java.util.List;
+
 public class ProductServiceImpl implements ProductService {
 
     private ProductDao productDao;
@@ -13,11 +15,29 @@ public class ProductServiceImpl implements ProductService {
         this.productDao = DaoFactory.getInstance().getProductDao();
     }
 
-    public void createProduct(Product product) {
 
+    @Override
+    public void addProduct(Product product) {
+        productDao.addProduct(product);
     }
 
-    public void deleteProduct(int id) {
+    @Override
+    public void removeProduct(int id) {
+        productDao.removeProduct(id);
+    }
 
+    @Override
+    public void updateProduct(Product product) {
+        productDao.updateProduct(product);
+    }
+
+    @Override
+    public List<Product> listProducts() {
+        return productDao.listProducts();
+    }
+
+    @Override
+    public Product getProduct(String name) {
+        return productDao.getProduct(name);
     }
 }

@@ -6,48 +6,70 @@ public class User {
     private String userName;
     private String phone;
     private String password;
-    private int statusId;
-    private int roleId;
+    private Status status;
+    private Role role;
 
     public User() {
     }
 
-    public User(String userName, String password, String phone, int statusId, int roleId) {
+    public User(String userName, String password, String phone, Status status, Role role) {
         this.userName = userName;
         this.phone = phone;
         this.password = password;
-        this.statusId = statusId;
-        this.roleId = roleId;
+        this.status = status;
+        this.role = role;
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getUserName() {
         return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
         return phone;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public int getStatusId() {
-        return statusId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setId(int Id) { this.id = id; }
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     @Override
     public String toString() {
-        return userName + "\n" + password + "\n" + phone + "\n" + statusId + "\n" + roleId;
+        return userName + "\n" + password + "\n" + phone + "\n" + status + "\n" + role;
     }
 }

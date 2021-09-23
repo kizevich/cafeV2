@@ -5,6 +5,8 @@ import by.itstep.cafe.dao.StatusDao;
 import by.itstep.cafe.entity.Status;
 import by.itstep.cafe.service.StatusService;
 
+import java.util.List;
+
 public class StatusServiceImpl implements StatusService {
 
     private StatusDao statusDao;
@@ -15,8 +17,27 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public void createStatus(Status status) {
+    public void addStatus(Status status) {
+        statusDao.addStatus(status);
+    }
 
-        statusDao.createStatus(status);
+    @Override
+    public void removeStatus(int id) {
+        statusDao.removeStatus(id);
+    }
+
+    @Override
+    public void updateStatus(Status status) {
+        statusDao.updateStatus(status);
+    }
+
+    @Override
+    public List listStatuses() {
+        return statusDao.listStatuses();
+    }
+
+    @Override
+    public Status getStatus(String name) {
+        return statusDao.getStatus(name);
     }
 }

@@ -6,9 +6,10 @@ import by.itstep.cafe.entity.User;
 
 public class Run {
     public static void main(String[] args) {
+
         User user = new User("client", "password", "12345", 1, 1);
 
         UserController controller = new UserControllerImpl();
-        controller.createUser(user);
+        controller.deleteUser(1);
     }
 }

@@ -2,9 +2,17 @@ package by.itstep.cafe.controller;
 
 import by.itstep.cafe.entity.Product;
 
+import java.util.List;
+
 public interface ProductController {
 
-    void createProduct(Product product);
+    void addProduct(Product product);
 
-    void deleteProduct(int id);
+    void removeProduct(int id);
+
+    void updateProduct(Product product);
+
+    List<Product> listProducts();
+
+    Product getProduct(String name);
 }

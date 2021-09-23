@@ -25,4 +25,6 @@ public class ServiceFactory {
     public StatusService getStatusService () { return new StatusServiceImpl(); }
 
     public TypeService getTypeService () { return new TypeServiceImpl(); }
+
+    public OrderService geOrderService() { return new OrderServiceImpl(); }
 }

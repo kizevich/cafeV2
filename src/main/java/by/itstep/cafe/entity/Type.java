@@ -1,9 +1,16 @@
 package by.itstep.cafe.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "type")
 public class Type {
 
-    private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @JoinColumn(name = "name")
+    private String name;
 
     public Type() {
     }

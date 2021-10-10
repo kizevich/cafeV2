@@ -1,9 +1,17 @@
 package by.itstep.cafe.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "status")
 public class Status {
 
-    private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @JoinColumn(name = "name")
+    private String name;
+    @JoinColumn(name = "name")
     private int discount;
 
     public Status() {

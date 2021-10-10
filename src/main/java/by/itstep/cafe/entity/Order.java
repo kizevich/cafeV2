@@ -1,16 +1,32 @@
 package by.itstep.cafe.entity;
 
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "order")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @JoinColumn(name = "price")
     private int fullPrice;
+    @OneToMany(mappedBy = "product")
     private List<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "clientId")
     private User client;
+    @JoinColumn(name = "state")
     private String state;
+    @JoinColumn(name = "createDate")
     private String createDate;
+    @ManyToOne
+    @JoinColumn(name = "formedBy")
     private User formedBy;
+    @ManyToOne
+    @JoinColumn(name = "driverId")
     private User driver;
 
     public Order(int id, List<Product> products, User client, String createDate,

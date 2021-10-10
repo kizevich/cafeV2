@@ -1,13 +1,31 @@
 package by.itstep.cafe.entity;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+@Entity
+@Table(name = "user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @JoinColumn(name = "userName")
     private String userName;
+    @JoinColumn(name = "phone")
     private String phone;
+    @JoinColumn(name = "password")
     private String password;
+    @ManyToOne
+    @JoinColumn(name = "statusId")
     private Status status;
+    @ManyToOne
+    @JoinColumn(name = "roleId")
     private Role role;
+    @OneToMany(mappedBy = "order")
+    private List<Order> orders;
 
     public User() {
     }
@@ -18,6 +36,7 @@ public class User {
         this.password = password;
         this.status = status;
         this.role = role;
+        this.orders = new ArrayList<>();
     }
 
     public int getId() {
@@ -68,8 +87,35 @@ public class User {
         this.role = role;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public String toString() {
         return userName + "\n" + password + "\n" + phone + "\n" + status + "\n" + role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(userName, user.userName) &&
+                Objects.equals(phone, user.phone) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(status, user.status) &&
+                Objects.equals(role, user.role) &&
+                Objects.equals(orders, user.orders);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, phone, password, status, role, orders);
     }
 }

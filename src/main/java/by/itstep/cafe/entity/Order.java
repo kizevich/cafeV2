@@ -11,16 +11,16 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @JoinColumn(name = "price")
+    @Column(name = "price")
     private int fullPrice;
     @OneToMany(mappedBy = "product")
     private List<Product> products;
     @ManyToOne
     @JoinColumn(name = "clientId")
     private User client;
-    @JoinColumn(name = "state")
+    @Column(name = "state")
     private String state;
-    @JoinColumn(name = "createDate")
+    @Column(name = "createDate")
     private String createDate;
     @ManyToOne
     @JoinColumn(name = "formedBy")

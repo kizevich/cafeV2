@@ -1,6 +1,5 @@
 package by.itstep.cafe.service.impl;
 
-import by.itstep.cafe.dao.DaoFactory;
 import by.itstep.cafe.dao.OrderDao;
 import by.itstep.cafe.entity.Order;
 import by.itstep.cafe.service.OrderService;

@@ -9,9 +9,9 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @JoinColumn(name = "name")
+    @Column(name = "name")
     private String name;
-    @JoinColumn(name = "name")
+    @Column(name = "discount")
     private int discount;
 
     public Status() {

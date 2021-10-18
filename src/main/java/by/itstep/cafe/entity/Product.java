@@ -9,16 +9,16 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @JoinColumn(name = "name")
+    @Column(name = "name")
     private String name;
-    @JoinColumn(name = "price")
+    @Column(name = "price")
     private int price;
     @ManyToOne
     @JoinColumn(name = "typeId")
     private Type type;
-    @JoinColumn(name = "description")
+    @Column(name = "description")
     private String description;
-    @JoinColumn(name = "imageSrc")
+    @Column(name = "imageSrc")
     private String imageSrc;
 
     public Product(int id, String name, int price, Type type, String description, String imageSrc) {

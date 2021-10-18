@@ -19,6 +19,8 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <mysql-connector-java>8.0.25</mysql-connector-java>
     <javax.servlet-api>4.0.0</javax.servlet-api>
+    <org.spring.core>5.1.5.RELEASE</org.spring.core>
+    <org.spring.data>2.1.8.RELEASE</org.spring.data>
   </properties>
 
   <dependencies>
@@ -65,13 +67,18 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>4.3.4.RELEASE</version>
+      <artifactId>spring-core</artifactId>
+      <version>${org.spring.core}</version>
     </dependency>
     <dependency>
-      <groupId>jstl</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.spring.core}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>${org.spring.data}</version>
     </dependency>
 
   </dependencies>

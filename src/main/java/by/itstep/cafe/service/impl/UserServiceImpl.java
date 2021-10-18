@@ -1,42 +1,40 @@
 package by.itstep.cafe.service.impl;
 
-import by.itstep.cafe.dao.DaoFactory;
 import by.itstep.cafe.dao.UserDao;
 import by.itstep.cafe.entity.User;
 import by.itstep.cafe.service.UserService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+@Service
+public class UserServiceImpl implements UserService{
+
 
     private UserDao userDao;
 
-    public UserServiceImpl () {
-        this.userDao = DaoFactory.getInstance().getUserDao();
+
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    public void createUser(User user) {
-        userDao.addUser(user);
+    public User createUser(User user) {
+        return userDao.save(user);
     }
 
     @Override
     public void deleteUser(int id) {
-        userDao.removeUser(id);
-    }
-
-    @Override
-    public void updateUser(User user) {
-        userDao.updateUser(user);
+        userDao.deleteById(id);
     }
 
     @Override
     public List listUsers() {
-        return userDao.listUsers();
+        return userDao.findAll();
     }
 
     @Override
-    public User getUser(String name) {
-        return userDao.getUser(name);
+    public User findUserByName(String name) {
+        return userDao.findUserByUserName(name);
     }
 }

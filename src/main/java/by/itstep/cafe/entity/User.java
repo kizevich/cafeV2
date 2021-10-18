@@ -12,11 +12,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @JoinColumn(name = "userName")
+    @Column(name = "userName")
     private String userName;
-    @JoinColumn(name = "phone")
+    @Column(name = "phone")
     private String phone;
-    @JoinColumn(name = "password")
+    @Column(name = "password")
     private String password;
     @ManyToOne
     @JoinColumn(name = "statusId")

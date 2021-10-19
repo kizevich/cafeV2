@@ -1,8 +1,7 @@
 package by.itstep.cafe.controller.impl;
 
 import by.itstep.cafe.controller.StatusController;
-import by.itstep.cafe.entity.Status;
-import by.itstep.cafe.service.ServiceFactory;
+import by.itstep.cafe.dao.entity.Status;
 import by.itstep.cafe.service.StatusService;
 
 import java.util.List;

@@ -1,9 +1,8 @@
 package by.itstep.cafe.controller.impl;
 
 import by.itstep.cafe.controller.ProductController;
-import by.itstep.cafe.entity.Product;
+import by.itstep.cafe.dao.entity.Product;
 import by.itstep.cafe.service.ProductService;
-import by.itstep.cafe.service.ServiceFactory;
 
 import java.util.List;
 

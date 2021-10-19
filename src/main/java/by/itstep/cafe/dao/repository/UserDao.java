@@ -1,10 +1,7 @@
-package by.itstep.cafe.dao;
+package by.itstep.cafe.dao.repository;
 
-import by.itstep.cafe.entity.User;
+import by.itstep.cafe.dao.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 public interface UserDao extends JpaRepository<User, Integer> {
 

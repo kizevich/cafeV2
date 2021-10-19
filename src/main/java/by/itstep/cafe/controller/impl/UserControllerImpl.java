@@ -2,9 +2,7 @@ package by.itstep.cafe.controller.impl;
 
 
 import by.itstep.cafe.controller.UserController;
-import by.itstep.cafe.entity.Role;
-import by.itstep.cafe.entity.User;
-import by.itstep.cafe.service.ServiceFactory;
+import by.itstep.cafe.dao.entity.User;
 import by.itstep.cafe.service.UserService;
 
 import java.util.List;

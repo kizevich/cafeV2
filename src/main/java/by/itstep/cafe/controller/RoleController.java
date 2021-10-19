@@ -1,6 +1,6 @@
 package by.itstep.cafe.controller;
 
-import by.itstep.cafe.entity.Role;
+import by.itstep.cafe.dao.entity.Role;
 
 import java.util.List;
 

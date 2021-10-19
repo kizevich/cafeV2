@@ -1,41 +1,38 @@
 package by.itstep.cafe.service.impl;
 
-import by.itstep.cafe.dao.TypeDao;
-import by.itstep.cafe.entity.Type;
+import by.itstep.cafe.dao.repository.TypeDao;
+import by.itstep.cafe.dao.entity.Type;
 import by.itstep.cafe.service.TypeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TypeServiceImpl implements TypeService {
 
     private TypeDao typeDao;
 
-    public TypeServiceImpl() {
-        this.typeDao = DaoFactory.getInstance().getTypeDao();
+    public TypeServiceImpl(TypeDao typeDao) {
+        this.typeDao = typeDao;
     }
 
     @Override
-    public void addType(Type type) {
-        typeDao.addType(type);
+    public Type addType(Type type) {
+       return typeDao.save(type);
     }
 
     @Override
     public void removeType(int id) {
-        typeDao.removeType(id);
-    }
-
-    @Override
-    public void updateType(Type type) {
-        typeDao.updateType(type);
+        typeDao.deleteById(id);;
     }
 
     @Override
     public List listTypes() {
-        return typeDao.listTypes();
+        return typeDao.findAll();
     }
 
     @Override
     public Type getType(String name) {
-        return typeDao.getType(name);
+        return typeDao.findByName(name);
     }
 }

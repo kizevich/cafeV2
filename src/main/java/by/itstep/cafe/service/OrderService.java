@@ -1,17 +1,16 @@
 package by.itstep.cafe.service;
 
-import by.itstep.cafe.entity.Order;
+import by.itstep.cafe.dao.entity.Order;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderService {
     void addOrder(Order order);
 
     void removeOrder(int id);
 
-    void updateOrder(Order order);
-
     List<Order> listOrders();
 
-    Order getOrder(int id);
+    Optional<Order> getOrder(int id);
 }

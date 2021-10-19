@@ -1,4 +1,4 @@
-package by.itstep.cafe.entity;
+package by.itstep.cafe.dao.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "userName")
     private String userName;

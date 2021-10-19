@@ -43,7 +43,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cafe`.`user` (
   `id` BIGINT NOT NULL,
-  `userName` VARCHAR(45) NOT NULL,
+  `userName` VARCHAR(45) NOT NULL UNIQUE,
   `phone` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `statusId` BIGINT NOT NULL,
@@ -109,7 +109,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cafe`.`product` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL UNIQUE,
   `price` INT NOT NULL,
   `typeId` BIGINT NOT NULL,
   `description` VARCHAR(45) NOT NULL,
@@ -143,9 +143,6 @@ CREATE TABLE IF NOT EXISTS `cafe`.`productSet` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-INSERT INTO user (userName,  password, phone) VALUES (kizevich, password, 1234567);
-
 
 
 

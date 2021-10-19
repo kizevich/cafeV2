@@ -1,8 +1,7 @@
 package by.itstep.cafe.controller.impl;
 
 import by.itstep.cafe.controller.TypeController;
-import by.itstep.cafe.entity.Type;
-import by.itstep.cafe.service.ServiceFactory;
+import by.itstep.cafe.dao.entity.Type;
 import by.itstep.cafe.service.TypeService;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package by.itstep.cafe.entity;
+package by.itstep.cafe.dao.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

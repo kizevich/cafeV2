@@ -1,21 +1,21 @@
-package by.itstep.cafe.entity;
+package by.itstep.cafe.dao.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "type")
-public class Type {
+@Table(name = "role")
+public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JoinColumn(name = "name")
+    @Column(name = "name")
     private String name;
 
-    public Type() {
+    public Role() {
     }
 
-    public Type(String name) {
+    public Role(String name) {
         this.name = name;
     }
 

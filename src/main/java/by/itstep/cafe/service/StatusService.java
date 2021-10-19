@@ -1,8 +1,9 @@
 package by.itstep.cafe.service;
 
-import by.itstep.cafe.entity.Status;
+import by.itstep.cafe.dao.entity.Status;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface StatusService {
 
@@ -10,9 +11,9 @@ public interface StatusService {
 
     void removeStatus(int id);
 
-    void updateStatus(Status status);
-
     List listStatuses();
 
     Status getStatus(String name);
+
+    Optional<Status> findNextStatus(int discount);
 }

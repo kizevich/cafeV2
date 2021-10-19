@@ -1,4 +1,4 @@
-package by.itstep.cafe.entity;
+package by.itstep.cafe.dao.entity;
 
 import javax.persistence.*;
 import java.util.Objects;

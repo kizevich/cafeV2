@@ -1,4 +1,4 @@
-package by.itstep.cafe.entity;
+package by.itstep.cafe.dao.entity;
 
 
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "price")
     private int fullPrice;

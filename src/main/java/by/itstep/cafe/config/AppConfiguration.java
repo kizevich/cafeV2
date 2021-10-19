@@ -23,7 +23,7 @@ import java.util.Properties;
 @ComponentScan("by.itstep.cafe")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {
-        "by.itstep.cafe.entity"
+        "by.itstep.cafe.dao.entity"
 })
 public class AppConfiguration {
 
@@ -36,14 +36,17 @@ public class AppConfiguration {
     @Value("${dialect}")
     private String dialect;
 
-    @Value("${validate")
-    private String validate;
+    @Value("${connection.username}")
+    private String userName;
+
+    @Value("&{connection.password")
+    private String password;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
-        localContainerEntityManagerFactoryBean.setPackagesToScan("by.itstep.cafe.entity");
+        localContainerEntityManagerFactoryBean.setPackagesToScan("by.itstep.cafe.dao.entity");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
         localContainerEntityManagerFactoryBean.setJpaProperties(additionalProperties());
@@ -61,6 +64,8 @@ public class AppConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource builder = new DriverManagerDataSource();
         builder.setDriverClassName(driverClass);
+        builder.setUsername(userName);
+        builder.setPassword(password);
         builder.setUrl(url);
 
         return builder;
@@ -68,7 +73,6 @@ public class AppConfiguration {
 
     private Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }

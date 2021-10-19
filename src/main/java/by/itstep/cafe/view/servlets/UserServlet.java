@@ -3,10 +3,9 @@ package by.itstep.cafe.view.servlets;
 
 import by.itstep.cafe.controller.UserController;
 import by.itstep.cafe.controller.impl.UserControllerImpl;
-import by.itstep.cafe.entity.Role;
-import by.itstep.cafe.entity.Status;
-import by.itstep.cafe.entity.User;
-import by.itstep.cafe.service.UserService;
+import by.itstep.cafe.dao.entity.Role;
+import by.itstep.cafe.dao.entity.Status;
+import by.itstep.cafe.dao.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;

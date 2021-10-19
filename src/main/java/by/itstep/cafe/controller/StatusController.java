@@ -1,6 +1,6 @@
 package by.itstep.cafe.controller;
 
-import by.itstep.cafe.entity.Status;
+import by.itstep.cafe.dao.entity.Status;
 
 import java.util.List;
 

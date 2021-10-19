@@ -1,42 +1,42 @@
 package by.itstep.cafe.service.impl;
 
-import by.itstep.cafe.dao.StatusDao;
-import by.itstep.cafe.entity.Status;
+import by.itstep.cafe.dao.repository.StatusDao;
+import by.itstep.cafe.dao.entity.Status;
 import by.itstep.cafe.service.StatusService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class StatusServiceImpl implements StatusService {
 
     private StatusDao statusDao;
 
-    public StatusServiceImpl() {
-
-        this.statusDao = DaoFactory.getInstance().geStatusDao();
+    public StatusServiceImpl(StatusDao statusDao) {
+        this.statusDao = statusDao;
     }
 
     @Override
     public void addStatus(Status status) {
-        statusDao.addStatus(status);
+        statusDao.save(status);
     }
 
     @Override
     public void removeStatus(int id) {
-        statusDao.removeStatus(id);
-    }
-
-    @Override
-    public void updateStatus(Status status) {
-        statusDao.updateStatus(status);
+        statusDao.deleteById(id);
     }
 
     @Override
     public List listStatuses() {
-        return statusDao.listStatuses();
+        return statusDao.findAll();
     }
 
     @Override
     public Status getStatus(String name) {
-        return statusDao.getStatus(name);
+        return statusDao.findByName(name);
+    }
+
+    @Override
+    public Optional<Status> findNextStatus(int discount) {
+        return statusDao.findNextStatus(discount);
     }
 }

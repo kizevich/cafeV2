@@ -5,6 +5,7 @@ import by.itstep.cafe.dao.repository.OrderDao;
 import by.itstep.cafe.dao.entity.Order;
 import by.itstep.cafe.service.OrderService;
 import by.itstep.cafe.service.StatusService;
+import by.itstep.cafe.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,9 @@ public class OrderServiceImpl implements OrderService {
             client.setStatus(statusService.findNextStatus(client.getStatus().getDiscount()).get());
         }
         order.setClient(client);
+        if (client.getDateOfBirth().equals(order.getCreateDate())) {
+            order.setFullPrice((int) (order.getFullPrice() - order.getFullPrice() * 0.9));
+        }
         orderDao.save(order);
     }
 
@@ -44,5 +48,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Optional<Order> getOrder(int id) {
         return orderDao.findById(id);
+    }
+
+    @Override
+    public List<Order> getOrdersByDate(String date) {
+        return orderDao.findAllByCreateDate(date);
     }
 }

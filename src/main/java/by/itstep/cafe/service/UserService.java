@@ -13,4 +13,10 @@ public interface UserService {
     List listUsers();
 
     User findUserByName(String name);
+
+    List findAllOrdersByUserName(String name);
+
+    List findAllOrderByDate(String date);
+
+    int getDiscountByUserName(String name);
 }

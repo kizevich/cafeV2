@@ -22,21 +22,19 @@ public class Order {
     private String state;
     @Column(name = "createDate")
     private String createDate;
-    @ManyToOne
-    @JoinColumn(name = "formedBy")
-    private User formedBy;
-    @ManyToOne
-    @JoinColumn(name = "driverId")
-    private User driver;
+    @Column(name = "deliveryTime")
+    private String deliveryTime;
+    @Column(name = "message")
+    private String message;
 
-    public Order(int id, List<Product> products, User client, String createDate,
-                 User formedBy, User driver) {
+    public Order(int id, List<Product> products, User client, String createDate, String deliveryTime,
+                 String message) {
         this.id = id;
         this.products = products;
         this.client = client;
         this.createDate = createDate;
-        this.formedBy = formedBy;
-        this.driver = driver;
+        this.deliveryTime = deliveryTime;
+        this.message = message;
         for (Product product : products) {
             fullPrice += product.getPrice();
         }
@@ -93,19 +91,19 @@ public class Order {
         this.createDate = createDate;
     }
 
-    public User getFormedBy() {
-        return formedBy;
+    public String getDeliveryTime() {
+        return deliveryTime;
     }
 
-    public void setFormedBy(User formedBy) {
-        this.formedBy = formedBy;
+    public void setDeliveryTime(String deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 
-    public User getDriver() {
-        return driver;
+    public String getMessage() {
+        return message;
     }
 
-    public void setDriver(User driver) {
-        this.driver = driver;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

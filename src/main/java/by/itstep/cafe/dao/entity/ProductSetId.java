@@ -14,6 +14,9 @@ public class ProductSetId implements Serializable {
     @Column(name = "orderId")
     private int orderId;
 
+    public ProductSetId() {
+    }
+
     public ProductSetId(int productId, int orderId) {
         this.productId = productId;
         this.orderId = orderId;

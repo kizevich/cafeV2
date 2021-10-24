@@ -18,6 +18,8 @@ public class User {
     private String phone;
     @Column(name = "password")
     private String password;
+    @Column(name = "dateOfBirth")
+    private String dateOfBirth;
     @ManyToOne
     @JoinColumn(name = "statusId")
     private Status status;
@@ -30,10 +32,12 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, String phone, Status status, Role role) {
+    public User(String userName, String password, String phone, String dateOfBirth,
+                Status status, Role role) {
         this.userName = userName;
         this.phone = phone;
         this.password = password;
+        this.dateOfBirth = dateOfBirth;
         this.status = status;
         this.role = role;
         this.orders = new ArrayList<>();
@@ -69,6 +73,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Status getStatus() {

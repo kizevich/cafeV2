@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `cafe`.`user` (
   `userName` VARCHAR(45) NOT NULL UNIQUE,
   `phone` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
+  `dateOfBirth` DATE NOT NULL,
   `statusId` BIGINT NOT NULL,
   `roleId` BIGINT NOT NULL,
   PRIMARY KEY (`id`),
@@ -73,20 +74,10 @@ CREATE TABLE IF NOT EXISTS `cafe`.`order` (
   `state` VARCHAR(45) NOT NULL,
   `crateDate` DATETIME NOT NULL,
   `price` INT NOT NULL,
-  `formedBy` BIGINT NOT NULL,
-  `driverId` BIGINT NOT NULL,
+  `deliveryTime` TIME NOT NULL,
+  `message` VARCHAR(45),
   PRIMARY KEY (`id`),
   CONSTRAINT `client_id`
-    FOREIGN KEY (`id`)
-    REFERENCES `cafe`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `formed_by`
-    FOREIGN KEY (`id`)
-    REFERENCES `cafe`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `driver_id`
     FOREIGN KEY (`id`)
     REFERENCES `cafe`.`user` (`id`)
     ON DELETE NO ACTION

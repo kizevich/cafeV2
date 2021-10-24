@@ -81,10 +81,6 @@
         <property column="price" name="fullPrice" type="int"/>
         <many-to-one name="client" not-null="true"
                      class="by.itstep.cafe.dao.entity.User"/>
-        <many-to-one name="driver" not-null="true"
-                     class="by.itstep.cafe.dao.entity.User"/>
-        <many-to-one name="formedBy" not-null="true"
-                     class="by.itstep.cafe.dao.entity.User"/>
         <set name="products" cascade="save-update" table="productSet">
             <key column="orderId"/>
             <many-to-many column="productId" class="by.itstep.cafe.dao.entity.Product"/>

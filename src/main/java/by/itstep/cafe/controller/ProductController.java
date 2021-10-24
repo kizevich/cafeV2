@@ -6,11 +6,9 @@ import java.util.List;
 
 public interface ProductController {
 
-    void addProduct(Product product);
+    Product addProduct(Product product);
 
     void removeProduct(int id);
-
-    void updateProduct(Product product);
 
     List<Product> listProducts();
 

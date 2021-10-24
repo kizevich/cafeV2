@@ -10,23 +10,18 @@ public class TypeControllerImpl implements TypeController {
 
     private TypeService typeService;
 
-    public TypeControllerImpl() {
-        this.typeService = ServiceFactory.getInstance().getTypeService();
+    public TypeControllerImpl(TypeService typeService) {
+        this.typeService = typeService;
     }
 
     @Override
-    public void addType(Type type) {
-        typeService.addType(type);
+    public Type addType(Type type) {
+        return typeService.addType(type);
     }
 
     @Override
     public void removeType(int id) {
         typeService.removeType(id);
-    }
-
-    @Override
-    public void updateType(Type type) {
-        typeService.updateType(type);
     }
 
     @Override

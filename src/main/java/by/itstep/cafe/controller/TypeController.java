@@ -6,11 +6,9 @@ import java.util.List;
 
 public interface TypeController {
 
-    void addType(Type type);
+    Type addType(Type type);
 
     void removeType(int id);
-
-    void updateType(Type type);
 
     List listTypes();
 

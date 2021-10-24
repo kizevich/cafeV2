@@ -10,24 +10,18 @@ public class RoleControllerImpl implements RoleController {
 
     private RoleService roleService;
 
-    public RoleControllerImpl() {
-        this.roleService = ServiceFactory.getInstance().getRoleService();
+    public RoleControllerImpl(RoleService roleService) {
+        this.roleService = roleService;
     }
 
-
     @Override
-    public void addRole(Role role) {
-        roleService.addRole(role);
+    public Role addRole(Role role) {
+        return roleService.addRole(role);
     }
 
     @Override
     public void removeRole(int id) {
         roleService.removeRole(id);
-    }
-
-    @Override
-    public void updateRole(Role role) {
-        roleService.updateRole(role);
     }
 
     @Override

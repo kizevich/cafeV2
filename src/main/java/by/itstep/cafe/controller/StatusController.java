@@ -10,8 +10,6 @@ public interface StatusController {
 
     void removeStatus(int id);
 
-    void updateStatus(Status status);
-
     List listStatuses();
 
     Status getStatus(String name);

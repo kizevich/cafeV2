@@ -16,8 +16,8 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public void addRole(Role role) {
-        roleDao.save(role);
+    public Role addRole(Role role) {
+        return roleDao.save(role);
     }
 
     @Override

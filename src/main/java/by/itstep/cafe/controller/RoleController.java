@@ -6,11 +6,9 @@ import java.util.List;
 
 public interface RoleController {
 
-    void addRole(Role role);
+    Role addRole(Role role);
 
     void removeRole(int id);
-
-    void updateRole(Role role);
 
     List listRoles();
 

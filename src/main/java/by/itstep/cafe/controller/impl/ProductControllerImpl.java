@@ -10,25 +10,19 @@ public class ProductControllerImpl implements ProductController {
 
     private ProductService productService;
 
-    public ProductControllerImpl() {
-
-        this.productService = ServiceFactory.getInstance().getProductService();
+    public ProductControllerImpl(ProductService productService) {
+        this.productService = productService;
     }
 
 
     @Override
-    public void addProduct(Product product) {
-        productService.addProduct(product);
+    public Product addProduct(Product product) {
+        return productService.addProduct(product);
     }
 
     @Override
     public void removeProduct(int id) {
         productService.removeProduct(id);
-    }
-
-    @Override
-    public void updateProduct(Product product) {
-        productService.updateProduct(product);
     }
 
     @Override

@@ -6,14 +6,18 @@ import java.util.List;
 
 public interface UserController {
 
-    void createUser(User user);
+    User createUser(User user) throws Exception;
 
     void deleteUser(int id);
 
-    void updateUser(User user);
-
     List listUsers();
 
-    User getUser(String name);
+    User findUserByName(String name);
+
+    List findAllOrdersByUserName(String name);
+
+    List findAllOrderByDate(String date);
+
+    int getDiscountByUserName(String name);
 
 }

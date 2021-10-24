@@ -11,14 +11,14 @@ public class UserControllerImpl implements UserController {
 
     private UserService userService;
 
-    public UserControllerImpl() {
-        this.userService = ServiceFactory.getInstance().getUserService();
+    public UserControllerImpl(UserService userService) {
+        this.userService = userService;
     }
 
 
     @Override
-    public void createUser(User user) {
-        userService.createUser(user);
+    public User createUser(User user) throws Exception {
+        return userService.createUser(user);
     }
 
     @Override
@@ -27,17 +27,27 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public void updateUser(User user) {
-        userService.updateUser(user);
-    }
-
-    @Override
     public List listUsers() {
         return userService.listUsers();
     }
 
     @Override
-    public User getUser(String name) {
-        return userService.getUser(name);
+    public User findUserByName(String name) {
+        return userService.findUserByName(name);
+    }
+
+    @Override
+    public List findAllOrdersByUserName(String name) {
+        return userService.findAllOrdersByUserName(name);
+    }
+
+    @Override
+    public List findAllOrderByDate(String date) {
+        return userService.findAllOrderByDate(date);
+    }
+
+    @Override
+    public int getDiscountByUserName(String name) {
+        return userService.getDiscountByUserName(name);
     }
 }

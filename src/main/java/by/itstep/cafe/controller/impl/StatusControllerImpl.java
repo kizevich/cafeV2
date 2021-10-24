@@ -10,8 +10,8 @@ public class StatusControllerImpl implements StatusController {
 
     private StatusService statusService;
 
-    public StatusControllerImpl() {
-        this.statusService = ServiceFactory.getInstance().getStatusService();
+    public StatusControllerImpl(StatusService statusService) {
+        this.statusService = statusService;
     }
 
     @Override
@@ -22,11 +22,6 @@ public class StatusControllerImpl implements StatusController {
     @Override
     public void removeStatus(int id) {
         statusService.removeStatus(id);
-    }
-
-    @Override
-    public void updateStatus(Status status) {
-        statusService.updateStatus(status);
     }
 
     @Override

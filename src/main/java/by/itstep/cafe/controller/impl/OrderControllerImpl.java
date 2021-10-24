@@ -5,18 +5,19 @@ import by.itstep.cafe.dao.entity.Order;
 import by.itstep.cafe.service.OrderService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class OrderControllerImpl implements OrderController {
 
     private OrderService orderService;
 
-    public OrderControllerImpl() {
-        this.orderService = ServiceFactory.getInstance().geOrderService();
+    public OrderControllerImpl(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     @Override
-    public void addOrder(Order order) {
-        orderService.addOrder(order);
+    public Order addOrder(Order order) {
+        return orderService.addOrder(order);
     }
 
     @Override
@@ -25,17 +26,12 @@ public class OrderControllerImpl implements OrderController {
     }
 
     @Override
-    public void updateOrder(Order order) {
-        orderService.updateOrder(order);
-    }
-
-    @Override
     public List<Order> listOrders() {
         return orderService.listOrders();
     }
 
     @Override
-    public Order getOrder(int id) {
+    public Optional<Order> getOrder(int id) {
         return orderService.getOrder(id);
     }
 }

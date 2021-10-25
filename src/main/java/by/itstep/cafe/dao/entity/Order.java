@@ -25,7 +25,7 @@ public class Order {
     @Column(name = "deliveryTime")
     private String deliveryTime;
     @Column(name = "message")
-    private String message;
+    private String message; // TODO comment
 
     public Order(int id, List<Product> products, User client, String createDate, String deliveryTime,
                  String message) {

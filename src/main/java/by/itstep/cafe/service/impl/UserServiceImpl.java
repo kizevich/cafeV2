@@ -1,5 +1,6 @@
 package by.itstep.cafe.service.impl;
 
+import by.itstep.cafe.dao.entity.Order;
 import by.itstep.cafe.dao.repository.UserDao;
 import by.itstep.cafe.dao.entity.User;
 import by.itstep.cafe.service.OrderService;
@@ -7,6 +8,7 @@ import by.itstep.cafe.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static by.itstep.cafe.Utils.*;
 
@@ -22,6 +24,7 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
         this.orderService = orderService;
     }
+// java docs
 
     @Override
     public User createUser(User user) throws Exception {
@@ -40,17 +43,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByName(String name) {
+    public Optional<User> findUserByName(String name) {
         return userDao.findUserByUserName(name);
     }
 
+    // orderService
     @Override
-    public List findAllOrdersByUserName(String name) {
+    public List<Order> findAllOrdersByUserName(String name) {
         return findUserByName(name).getOrders();
     }
 
     @Override
-    public List findAllOrderByDate(String date) {
+    public List<Order> findAllOrderByDate(String date) {
         return orderService.getOrdersByDate(date);
     }
 
@@ -58,7 +62,7 @@ public class UserServiceImpl implements UserService {
     public int getDiscountByUserName(String name) {
         return findUserByName(name).getStatus().getDiscount();
     }
-
+//TODO make void, create new exception class
     private boolean isValid(User user) throws Exception {
         boolean valid = false;
         if (isPhone(user.getPhone())) {

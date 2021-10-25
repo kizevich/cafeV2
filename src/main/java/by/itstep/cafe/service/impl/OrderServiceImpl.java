@@ -23,11 +23,11 @@ public class OrderServiceImpl implements OrderService {
     public Order addOrder(Order order) {
         User client = order.getClient();
         int discount = client.getStatus().getDiscount();
+        // TODO big decimal
         order.setFullPrice((int) (order.getFullPrice() - order.getFullPrice() * 0.01 * discount));
         if (statusService.findNextStatus(client.getStatus().getDiscount()).isPresent()) {
             client.setStatus(statusService.findNextStatus(client.getStatus().getDiscount()).get());
         }
-        order.setClient(client);
         if (client.getDateOfBirth().equals(order.getCreateDate())) {
             order.setFullPrice((int) (order.getFullPrice() - order.getFullPrice() * 0.9));
         }

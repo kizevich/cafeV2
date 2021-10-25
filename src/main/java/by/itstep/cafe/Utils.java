@@ -1,7 +1,7 @@
 package by.itstep.cafe;
 
-public class Utils {
-
+public final class Utils {
+//TODO move to service
     public static final String TEXT_PATTERN = "[A-Za-z]+";
     public static final String LOGIN_PATTERN = "[\\w]+";
     public static final String PHONE_PATTERN =
